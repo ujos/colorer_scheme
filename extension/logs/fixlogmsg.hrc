@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hrc PUBLIC "-//Cail Lomecb//DTD Colorer HRC take5//EN"
+  "http://colorer.sf.net/2003/hrc.dtd">
+
+<hrc version="take5" xmlns="http://colorer.sf.net/2003/hrc"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://colorer.sf.net/2003/hrc http://colorer.sf.net/2003/hrc.xsd">
+
+<type name="fix_log_messages">
+
+<region name="fl_symbol" parent="def:Symbol" />
+<region name="fl_string" parent="def:String"/>
+<region name="fl_string_content" parent="def:StringContent"/>
+<region name="fl_tag_key" parent="def:Number"/>
+<region name="fl_tag_value" parent="def:Insertion"/>
+<region name="fl_number" parent="def:Number"/>
+<region name="fl_soh" parent="def:Symbol"/>
+<region name="fl_path" parent="def:Path"/>
+<region name="fl_triangle_bracket" parent="def:Path"/>
+
+<region name="fl_log_type" parent="def:Label"/>
+<region name="fl_bad_log_type" parent="def:Error"/>
+<region name="fl_34_tag" parent="def:Error"/>
+
+<region name="fl_ip_address" parent="def:Keyword"/>
+<region name="fl_constant" parent="def:Constant"/>
+
+<region name="fl_bracket_start" parent="def:PairStart"/>
+<region name="fl_bracket_end" parent="def:PairEnd"/>
+
+<region name="fl_tag_start" parent="def:PairStart" />
+<region name="fl_tag_end" parent="def:PairEnd" />
+
+<region name="fl_date_time" parent="def:Date"/>
+
+<scheme name="date_time">
+ <regexp match="/\d{8}\-\d{2}\:\d{2}\:\d{2}\.\d{3}/" region="fl_date_time"/>
+</scheme>
+
+<scheme name="tag">
+ <regexp match="/\M(34)(=)([^\]+)(\)/" region1="fl_tag_start" region2="fl_symbol" region3="fl_tag_end" region4="fl_soh" />
+ <regexp match="/(34)(=)([^\]+)(\)/" region1="fl_34_tag" region3="fl_34_tag" />
+ <regexp match="/\M(\d+)(=)([^\]+)(\)/" region1="fl_tag_start" region2="fl_symbol" region3="fl_tag_end" region4="fl_soh" />
+ <regexp match="/(\d+)(=)([^\]+)(\)/" region1="fl_tag_key" region3="fl_tag_value" />
+</scheme>
+
+<scheme name="log_level_constants">
+ <keywords region="fl_log_type" ignorecase="ignorecase">
+	<word name="NOTE"/>
+	<word name="DEBUG"/>
+ </keywords>
+ <keywords region="fl_bad_log_type" ignorecase="ignorecase">
+	<word name="WARNING"/>
+	<word name="ERROR"/>
+ </keywords>
+ <keywords region="fl_constant" ignorecase="ignorecase" >
+	<word name="true"/>
+	<word name="false"/>
+	<word name="OK"/>
+	<word name="OFF"/>
+ </keywords>
+ <keywords region="fl_symbol" >
+	<symb name=":"/>
+ </keywords>
+
+   <inherit scheme="micex_keywords"/>
+   <inherit scheme="b2bits_keywords"/>
+
+</scheme>
+
+<scheme name="sender_target_pair">
+ <regexp match="/\M(\<[^(\>\,)]+)(\,)([^(\>)]+\>)/" region0="fl_string" region1="fl_bracket_start" region3="fl_bracket_end" region2="fl_symbol" />
+ <regexp match="/(\<)([^(\>\,)]+)(\,)([^(\>)]+)(\>)/" region1="fl_triangle_bracket" region2="fl_string_content" region4="fl_string_content" region5="fl_triangle_bracket" />
+</scheme>
+
+<scheme name="square_brackets">
+ <regexp match="/\M(\[)([^\]]+)(\])/" region2="fl_string" region1="fl_bracket_start" region3="fl_bracket_end" />
+</scheme>
+
+<scheme name="log_level_variables">
+ <regexp match="/\M(^[\=\d])(\s+)(\)(\w+)/" region1="fl_bracket_start" region2="fl_symbol" region3="fl_bracket_end" />
+ <regexp match="/(^[\=\d])(\s+)(\)(\w+)\m/" region1="fl_string" region2="fl_symbol" region3="fl_string" />
+ <regexp match="/((^ )[\W\w]+)(=)([\W\w]+)/" region1="fl_bracket_start" region2="fl_symbol" region3="fl_bracket_end" />
+</scheme>
+
+<scheme name="fix_log_messages">
+ <inherit scheme="tag"/>
+ <inherit scheme="date_time"/>
+ <inherit scheme="log_level_constants"/>
+ <inherit scheme="log_level_variables"/>
+ <inherit scheme="sender_target_pair"/>
+ <inherit scheme="square_brackets"/>
+</scheme>
+
+</type>
+</hrc>
