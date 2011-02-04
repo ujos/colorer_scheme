@@ -6,13 +6,14 @@
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://colorer.sf.net/2003/hrc http://colorer.sf.net/2003/hrc.xsd">
 
+
 <type name="fix_log_messages">
 
 <region name="fl_symbol" parent="def:Symbol" />
 <region name="fl_string" parent="def:String"/>
 <region name="fl_string_content" parent="def:StringContent"/>
 <region name="fl_tag_key" parent="def:Number"/>
-<region name="fl_tag_value" parent="def:Insertion"/>
+<region name="fl_tag_value" parent="def:String"/>
 <region name="fl_number" parent="def:Number"/>
 <region name="fl_soh" parent="def:Symbol"/>
 <region name="fl_path" parent="def:Path"/>
