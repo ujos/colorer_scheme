@@ -1,0 +1,17 @@
+                   ---  Cmake Extension Change History.  --- 
+
+
+# + new feature
+# - fixed bug
+# ! todo 
+
+
+
+Version 0.0.0.1 (New Way), (04-Feb-2011), ivan.sidarau@gmail.com
+------------------------------------------------------------------------------
+[+] Support some keywords and brackets.
+[!] change if, else, elsif, endif support
+[!] add outlines for macros and functions
+[!] add support of string functions
+[!] add support of list functions
+
