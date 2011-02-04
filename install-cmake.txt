@@ -1,0 +1,7 @@
+1. Copy extension to the <colorer-root>\hrc\
+2. Add following to <colorer-root>\hrc\proto.hrc after </annotation> tag
+
+  <prototype name="cmake" group="scripts.compile" description="CMake files">
+    <location link="./extension/cmake/cmake.hrc"/>
+    <filename>/(CMakeLists\.txt|\.cmake)$/i</filename>
+  </prototype>

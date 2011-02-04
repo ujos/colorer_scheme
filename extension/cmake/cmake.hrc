@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding='Windows-1251'?>
+<!DOCTYPE hrc PUBLIC "-//Cail Lomecb//DTD Colorer HRC take5//EN"
+  "http://colorer.sf.net/2003/hrc.dtd">
+
+<hrc version="take5" xmlns="http://colorer.sf.net/2003/hrc"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://colorer.sf.net/2003/hrc http://colorer.sf.net/2003/hrc.xsd">
+
+ <type name="cmake">
+
+  <region name="cmake_function_names" parent="def:Keyword"/>
+  <region name="cmake_function_parameters_names" parent="def:TypeKeyword"/>
+  <region name="cmake_parameters" parent="def:String"/>
+
+  <region name="cmake_string" parent="def:StringContent"/>
+
+  <scheme name="cmake">
+    <inherit scheme="Expressions" />
+  </scheme>
+
+  <scheme name="keywords" >
+    <keywords region="cmake_function_names" ignorecase="yes">
+      <word name="cmake_minimum_required"/>
+      <word name="set"/>
+      <word name="project"/>
+      <word name="option"/>
+      <word name="find_package"/>
+      <word name="add_definitions"/>
+      <word name="message"/>
+      <word name="find_package"/>
+      <word name="add_subdirectory"/>
+      <word name="include_directories"/>
+      <word name="add_executable"/>
+      <word name="target_link_libraries"/>
+      <word name="add_dependencies"/>
+      <word name="add_custom_command"/>
+      <word name="add_library"/>
+      <word name="find_path"/>
+      <word name="find_library"/>
+      <word name="execute_process"/>
+      <word name="include"/>
+    </keywords>
+    <keywords region="cmake_function_parameters_names" ignorecase="no">
+      <word name="QUIET"/>
+      <word name="REQUIRED"/>
+      <word name="NOT"/>
+      <word name="STREQUAL"/>
+    </keywords>
+    <keywords region="cmake_parameters" ignorecase="no">
+      <word name="UNIX"/>
+      <word name="WIN32"/>
+      <word name="MSVC10"/>
+      <word name="MSVC90"/>
+      <word name="MSVC80"/>
+      <word name="MSVC"/>
+    </keywords>
+  </scheme>
+
+  <scheme name="Strings">
+   <block start="/(?{def:StringEdge}[Ll]?&#34;)/" end="/(?{def:StringEdge}&#34;)/"
+          scheme="StringContent" region="def:String" inner-region="yes" region00="def:PairStart" region10="def:PairEnd" />
+  </scheme>
+
+  <scheme name="StringContent">
+   <regexp match="/\\\\$/" region="def:Error"/>
+   <regexp match="/(\%)\w+(\%)/" region="def:Const" region1="def:PairStart" region2="def:PairEnd"/>
+   <regexp match="/\\[^xX\d]/" region="def:StringContent"/>
+   <regexp match="/\\$/" region="def:StringContent"/>
+   <regexp match="/\\x[\da-fA-F]{1,8}/i" region="def:StringContent"/>
+   <regexp match="/\\[0-7]{1,12}/" region="def:StringContent"/>
+   <regexp match="/\%[\-\+\#0]*?[\d\*]*(\.[\d\*]+)?[Ll]?[SsCcsuidopxXnEefgG]/" region="def:StringContent"/>
+   <regexp match="/[^\\\&#34;]$/" region="def:Error"/>
+   <regexp match="/\M(\$\{)([^(\})]+)(\})/" region1="def:Symbol" region3="def:Symbol" />
+   <regexp match="/(\$\{)([^(\})]+)(\})\m/" region1="def:PairStart" region3="def:PairEnd" />
+   <inherit scheme="TabsAsErrors"/>
+  </scheme>
+
+  <scheme name="TabsAsErrors" if="tabs-as-errors">
+    <regexp match="/\t+/" region='def:Error'/>
+  </scheme>
+
+
+  <scheme name="Expressions">
+
+   <inherit scheme="Strings" />
+   
+   <block start="/(macro)/i" end="/(endmacro)/i" scheme="Expressions"
+          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <block start="/(function)/i" end="/(endfunction)/i" scheme="Expressions"
+          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <block start="/([\n\s\r\t])(if)/i" end="/(endif)/i" scheme="Expressions"
+          region00="def:Symbol" region02="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <block start="/(^)(if)/i" end="/(endif)/i" scheme="Expressions"
+          region00="def:Symbol" region02="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <block start="/(foreach)/i" end="/(endforeach)/i" scheme="Expressions"
+          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+
+
+   <block start="/(\$\{)/" end="/(\})/" scheme="Expressions"
+          region="def:String" region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <block start="/(\()/" end="/(\))/" scheme="Expressions"
+          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <regexp match="/\m\#.*$/" region="def:CommentContent" />
+
+   <inherit scheme="keywords" />
+
+  </scheme>
+
+    
+    </type>
+</hrc>
