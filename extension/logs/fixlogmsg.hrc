@@ -64,9 +64,6 @@
 	<symb name=":"/>
  </keywords>
 
-   <inherit scheme="micex_keywords"/>
-   <inherit scheme="b2bits_keywords"/>
-
 </scheme>
 
 <scheme name="sender_target_pair">
