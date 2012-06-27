@@ -8,25 +8,91 @@
 
  <type name="cmake">
 
+  <region name="cmake_function" parent="def:Keyword"/>
   <region name="cmake_function_names" parent="def:Keyword"/>
-  <region name="cmake_function_parameters_names" parent="def:TypeKeyword"/>
+  <region name="cmake_function_parameters_names" parent="def:String"/>
+  <region name="cmake_function_determine_parameter_names" parent="def:Keyword"/>
+  <region name="cmake_function_special_parameter_names" parent="def:String"/>
   <region name="cmake_parameters" parent="def:String"/>
 
   <region name="cmake_string" parent="def:StringContent"/>
 
   <scheme name="cmake">
+    <inherit scheme="Commands" />
+    <inherit scheme="Strings" />
     <inherit scheme="Expressions" />
+    <inherit scheme="Keywords" />
   </scheme>
 
-  <scheme name="keywords" >
+  <scheme name="FunctionParameters">
+    <block start="/(\()/" end="/(\))/" scheme="FunctionParameters" region10="def:Symbol" region01="def:String" />
+    <inherit scheme="Strings" />
+    <regexp match="/(\{)/" region1="def:Error" region0="def:Error" />
+  </scheme>
+
+  <scheme name="Void">
+  </scheme>
+
+  <scheme name="Commands">
+
+   <block start="/(find_path)(\()/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region03="cmake_function_special_parameter_names" /> -->
+   <block start="/(find_library)(\()/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region03="cmake_function_special_parameter_names" /> -->
+
+   <block start="/(message)(\()( *)(STATUS)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <block start="/(message)(\()( *)(FATAL_ERROR)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <regexp match="/(message)(\()(.*)(\))/" region1="cmake_function_names" region3="def:Error" region2="def:PairStart" region4="def:PairEnd" />
+
+   <block start="/(set)(\()( *)(CMAKE_CONFIGURATION_TYPES)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <block start="/(set)(\()( *)(CMAKE_ADDRESS_MODEL)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <block start="/(set)(\()( *)(CMAKE_CXX_FLAGS)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <block start="/(set)(\()( *)(SOLUTION_BINARY_DIR)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <block start="/(set)(\()( *)(EXECUTABLE_OUTPUT_PATH)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <block start="/(set)(\()( *)(LIBRARY_OUTPUT_PATH)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <block start="/(set)(\()( *)(CMAKE_RUNTIME_OUTPUT_DIRECTORY)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <block start="/(set)(\()( *)(BINARIES_DIRECTORY)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <block start="/(set)(\()/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" />
+   <regexp match="/(set)(\()(.*)(\))/" region1="cmake_function_names" region3="def:Error" region2="def:PairStart" region4="def:PairEnd" />
+
+   <block start="/(set_property)(\()( *)(TARGET)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <block start="/(set_property)(\()( *)(GLOBAL)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <regexp match="/(set_property)(\()(.*)(\))/" region1="cmake_function_names" region3="def:Error" region2="def:PairStart" region4="def:PairEnd" />
+
+   <block start="/(cmake_minimum_required)(\()( *)(VERSION)( )/" end="/(\))/i" scheme="FunctionParameters" region00="def:Symbol" region10="def:Symbol" region01="cmake_function" region02="def:PairStart" region11="def:PairEnd" region04="cmake_function_special_parameter_names" />
+   <regexp match="/(cmake_minimum_required)(\()(.*)(\))/" region1="cmake_function_names" region3="def:Error" region2="def:PairStart" region4="def:PairEnd" />
+
+  </scheme>
+
+  <scheme name="Strings">
+   <block start="/(?{def:StringEdge}[Ll]?&#34;)/" end="/(?{def:StringEdge}&#34;)/"
+          scheme="StringContent" region="def:String" inner-region="yes" region00="def:PairStart" region10="def:PairEnd" />
+   <block start="/(\$\{)/" end="/(\})/" scheme="Expressions"
+          region="def:String" region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+  </scheme>
+
+  <scheme name="Expressions">
+   <block start="/(macro)/i" end="/(endmacro)/i" scheme="cmake"
+          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <block start="/(function)/i" end="/(endfunction)/i" scheme="cmake"
+          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <block start="/([\n\s\r\t])(if)/i" end="/(endif)/i" scheme="cmake"
+          region00="def:Symbol" region02="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <block start="/(^)(if)/i" end="/(endif)/i" scheme="cmake"
+          region00="def:Symbol" region02="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <block start="/(foreach)/i" end="/(endforeach)/i" scheme="cmake"
+          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+
+   <block start="/(\()/" end="/(\))/" scheme="Expressions"
+          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
+   <regexp match="/\m\#.*$/" region="def:CommentContent" />
+    <inherit scheme="Strings" />
+  </scheme>
+
+
+  <scheme name="Keywords" >
     <keywords region="cmake_function_names" ignorecase="yes">
-      <word name="cmake_minimum_required"/>
-      <word name="set"/>
       <word name="project"/>
       <word name="option"/>
-      <word name="find_package"/>
       <word name="add_definitions"/>
-      <word name="message"/>
       <word name="find_package"/>
       <word name="add_subdirectory"/>
       <word name="include_directories"/>
@@ -35,8 +101,6 @@
       <word name="add_dependencies"/>
       <word name="add_custom_command"/>
       <word name="add_library"/>
-      <word name="find_path"/>
-      <word name="find_library"/>
       <word name="execute_process"/>
       <word name="include"/>
     </keywords>
@@ -56,11 +120,6 @@
     </keywords>
   </scheme>
 
-  <scheme name="Strings">
-   <block start="/(?{def:StringEdge}[Ll]?&#34;)/" end="/(?{def:StringEdge}&#34;)/"
-          scheme="StringContent" region="def:String" inner-region="yes" region00="def:PairStart" region10="def:PairEnd" />
-  </scheme>
-
   <scheme name="StringContent">
    <regexp match="/\\\\$/" region="def:Error"/>
    <regexp match="/(\%)\w+(\%)/" region="def:Const" region1="def:PairStart" region2="def:PairEnd"/>
@@ -78,34 +137,5 @@
   <scheme name="TabsAsErrors" if="tabs-as-errors">
     <regexp match="/\t+/" region='def:Error'/>
   </scheme>
-
-
-  <scheme name="Expressions">
-
-   <inherit scheme="Strings" />
-   
-   <block start="/(macro)/i" end="/(endmacro)/i" scheme="Expressions"
-          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
-   <block start="/(function)/i" end="/(endfunction)/i" scheme="Expressions"
-          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
-   <block start="/([\n\s\r\t])(if)/i" end="/(endif)/i" scheme="Expressions"
-          region00="def:Symbol" region02="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
-   <block start="/(^)(if)/i" end="/(endif)/i" scheme="Expressions"
-          region00="def:Symbol" region02="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
-   <block start="/(foreach)/i" end="/(endforeach)/i" scheme="Expressions"
-          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
-
-
-   <block start="/(\$\{)/" end="/(\})/" scheme="Expressions"
-          region="def:String" region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
-   <block start="/(\()/" end="/(\))/" scheme="Expressions"
-          region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
-   <regexp match="/\m\#.*$/" region="def:CommentContent" />
-
-   <inherit scheme="keywords" />
-
-  </scheme>
-
-    
-    </type>
+  </type>
 </hrc>

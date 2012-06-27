@@ -6,6 +6,10 @@
 # ! todo 
 
 
+Version 0.0.0.2 (Commands in), (27-Jun-2012), ivan.sidarau@gmail.com
+------------------------------------------------------------------------------
+[+] adding methods namespace scheme
+[+] addign error show on cmake_minimum_required, set, message, set_property functions
 
 Version 0.0.0.1 (New Way), (04-Feb-2011), ivan.sidarau@gmail.com
 ------------------------------------------------------------------------------
