@@ -6,6 +6,11 @@
 # ! todo 
 
 
+Version 0.0.0.3 (Commands in), (04-Jul-2012), ivan.sidarau@gmail.com
+------------------------------------------------------------------------------
+[+] sorted commands by alphabet
+[+] added 'defined_property', 'execute_process', 'file', 'list', 'message', 'set', 'set_property', 'string' commands (see http://cmake.org/cmake/help/v2.8.8/cmake.html#command:file)
+
 Version 0.0.0.2 (Commands in), (27-Jun-2012), ivan.sidarau@gmail.com
 ------------------------------------------------------------------------------
 [+] adding methods namespace scheme
