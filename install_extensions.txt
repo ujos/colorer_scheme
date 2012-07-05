@@ -9,8 +9,11 @@
    at <colorer dir>\catalog.xml
 
 3. Reload colorer properties (for Far):
-3.1 Open editor with "CMakeLists.txt"
-3.2 Press "F11"
-3.3 Choose "Colorer"
-3.4 Press "R"
+3.1 Open editor with "CMakeLists.txt";
+3.2 Press "F11";
+3.3 Choose "Colorer";
+3.4 Press "R" if nothing happened than
+3.4.1 Press "C" (Settings, "Настройка");
+3.4.2 Select "R" (Reload Database, "Перечитать hrc").
+
 
