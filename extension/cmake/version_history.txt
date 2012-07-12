@@ -5,6 +5,10 @@
 # - fixed bug
 # ! todo 
 
+Version 0.0.0.4 (Fixing continue of command error), (12-Jul-2012), ivan.sidarau@gmail.com
+------------------------------------------------------------------------------
+[-] fixed bug, when unknown command end on known command
+[-] fixed bug, when $ENV{PP} show error
 
 Version 0.0.0.3 (Commands in), (04-Jul-2012), ivan.sidarau@gmail.com
 ------------------------------------------------------------------------------
