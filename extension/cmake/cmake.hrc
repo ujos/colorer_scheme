@@ -142,6 +142,8 @@
   </scheme>
 
   <scheme name="Strings">
+   <block start="/\\(?{def:StringEdge}[Ll]?&#34;)/" end="/\\(?{def:StringEdge}&#34;)/" scheme="Expressions"
+          region="StringContent" region00="def:Symbol" region01="def:PairStart" region10="def:Symbol" region11="def:PairEnd"/>
    <block start="/(?{def:StringEdge}[Ll]?&#34;)/" end="/(?{def:StringEdge}&#34;)/"
           scheme="StringContent" region="def:String" inner-region="yes" region00="def:PairStart" region10="def:PairEnd" />
    <block start="/(\$\{)/" end="/(\})/" scheme="Expressions"
