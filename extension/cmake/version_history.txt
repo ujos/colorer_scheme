@@ -1,0 +1,30 @@
+                   ---  Cmake Extension Change History.  --- 
+
+
+# + new feature
+# - fixed bug
+# ! todo 
+
+Version 0.0.0.4 (Fixing continue of command error), (12-Jul-2012), ivan.sidarau@gmail.com
+------------------------------------------------------------------------------
+[-] fixed bug, when unknown command end on known command
+[-] fixed bug, when $ENV{PP} show error
+
+Version 0.0.0.3 (Commands in), (04-Jul-2012), ivan.sidarau@gmail.com
+------------------------------------------------------------------------------
+[+] sorted commands by alphabet
+[+] added 'defined_property', 'execute_process', 'file', 'list', 'message', 'set', 'set_property', 'string' commands (see http://cmake.org/cmake/help/v2.8.8/cmake.html#command:file)
+
+Version 0.0.0.2 (Commands in), (27-Jun-2012), ivan.sidarau@gmail.com
+------------------------------------------------------------------------------
+[+] adding methods namespace scheme
+[+] addign error show on cmake_minimum_required, set, message, set_property functions
+
+Version 0.0.0.1 (New Way), (04-Feb-2011), ivan.sidarau@gmail.com
+------------------------------------------------------------------------------
+[+] Support some keywords and brackets.
+[!] change if, else, elsif, endif support
+[!] add outlines for macros and functions
+[!] add support of string functions
+[!] add support of list functions
+

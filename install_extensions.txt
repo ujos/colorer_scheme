@@ -1,0 +1,19 @@
+
+#  This document describes how to install support of cmake, fix-protocol log files 
+#  to colorer library (http://colorer.sourceforge.net/).
+
+1. Put all files at <colorer dir>\hrc 
+   (for ex. c:\Program Files\Far2\Plugins\colorer-truemod\hrc)
+
+2. Add "<location link="hrc/re_ext.hrc"/> " -> !!! RIGHT AFTER <- "<hrc-sets>" tag 
+   at <colorer dir>\catalog.xml
+
+3. Reload colorer properties (for Far):
+3.1 Open editor with "CMakeLists.txt";
+3.2 Press "F11";
+3.3 Choose "Colorer";
+3.4 Press "R" if nothing happened than
+3.4.1 Press "C" (Settings, "Настройка");
+3.4.2 Select "R" (Reload Database, "Перечитать hrc").
+
+
