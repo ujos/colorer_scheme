@@ -20,39 +20,53 @@
 
   <scheme name="keywords" >
     <keywords region="cmake_function_names" ignorecase="yes">
-      <word name="cmake_minimum_required"/>
-      <word name="set"/>
-      <word name="project"/>
-      <word name="option"/>
-      <word name="find_package"/>
-      <word name="add_definitions"/>
-      <word name="message"/>
-      <word name="find_package"/>
-      <word name="add_subdirectory"/>
-      <word name="include_directories"/>
-      <word name="add_executable"/>
-      <word name="target_link_libraries"/>
-      <word name="add_dependencies"/>
       <word name="add_custom_command"/>
+      <word name="add_definitions"/>
+      <word name="add_dependencies"/>
+      <word name="add_executable"/>
       <word name="add_library"/>
-      <word name="find_path"/>
-      <word name="find_library"/>
+      <word name="add_subdirectory"/>
+      <word name="cmake_minimum_required"/>
+      <word name="elseif"/>
       <word name="execute_process"/>
+      <word name="file"/>
+      <word name="find_library"/>
+      <word name="find_package"/>
+      <word name="find_package"/>
+      <word name="find_path"/>
       <word name="include"/>
+      <word name="include_directories"/>
+      <word name="link_directories"/>
+      <word name="message"/>
+      <word name="option"/>
+      <word name="project"/>
+      <word name="set"/>
+      <word name="set_target_properties"/>
+      <word name="source_group"/>
+      <word name="target_link_libraries"/>
     </keywords>
     <keywords region="cmake_function_parameters_names" ignorecase="no">
+      <word name="FILES"/>
+      <word name="GLOB"/>
+      <word name="NOT"/>
+      <word name="PROPERTIES"/>
       <word name="QUIET"/>
       <word name="REQUIRED"/>
-      <word name="NOT"/>
       <word name="STREQUAL"/>
     </keywords>
     <keywords region="cmake_parameters" ignorecase="no">
+      <word name="MSVC"/>
+      <word name="MSVC10"/>
+      <word name="MSVC11"/>
+      <word name="MSVC12"/>
+      <word name="MSVC14"/>
+      <word name="MSVC60"/>
+      <word name="MSVC70"/>
+      <word name="MSVC71"/>
+      <word name="MSVC80"/>
+      <word name="MSVC90"/>
       <word name="UNIX"/>
       <word name="WIN32"/>
-      <word name="MSVC10"/>
-      <word name="MSVC90"/>
-      <word name="MSVC80"/>
-      <word name="MSVC"/>
     </keywords>
   </scheme>
 
